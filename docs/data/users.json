@@ -4,14 +4,8 @@
   "647063bda97c7fc5e436455bead848706be289f2134316f307059754e00ae0b9": {
    "salt": "n1+L6RVlS+R0ntzbaxPRfw==",
    "iterations": 600000,
-   "iv": "VVn4JFQTNGekBlt5",
-   "wrappedKey": "S48+HMmjPZs1XH+7oOmHnLjlYNly/q/9vSbUL5LyAJHCKEoO9g7KOvz9cr4NprRJ"
-  },
-  "5002a1f37ce489461c5d9d522ebd17ec8f3c4994f73c65d88fefbe6a4ea12c64": {
-   "salt": "Aq+xYkwMQR7EWTQl9yQ6fg==",
-   "iterations": 600000,
-   "iv": "wOjpvY40Dm28AcdW",
-   "wrappedKey": "qoMPcVwu+tStg98u6QvOfjRxvq1lf+LqhcJfufbRmVHNNa0ThSlNBaqkoTGVrouX"
+   "iv": "otrUNDGds1RJa71i",
+   "wrappedKey": "+UInL1oucLM77Hf47cYeJ0G+Hsk57iYgXd7Sv5HB/E9d8L3N4MMb2J5geLvnPm52"
   }
  }
 }
