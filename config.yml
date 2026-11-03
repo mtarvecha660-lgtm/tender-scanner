@@ -1,0 +1,239 @@
+# ============================================================
+#  TENDER SCANNER SETTINGS  —  edit this file on GitHub
+#  (click the pencil icon, change words, then "Commit changes")
+#  Lines starting with # are notes and are ignored.
+# ============================================================
+
+# Which states to keep. Only tenders located in these states are saved.
+states: [Madhya Pradesh, Rajasthan]
+
+# Your home area. Tenders from these districts get a "Near you" badge
+# and appear first in the grocery list.
+home_districts: [Mandsaur, Neemuch, Ratlam, Ujjain, Chittorgarh, Pratapgarh, Jhalawar]
+
+# Tenders closing within this many days get a red "Closing soon" badge.
+closing_soon_days: 3
+
+# Closed tenders stay on the dashboard history this many days, then are removed.
+keep_closed_days: 30
+
+# ------------------------------------------------------------
+#  CATEGORIES
+#  A tender gets EVERY category whose words appear in its title/items.
+#  A tender with Grocery + something else is still shown under Grocery
+#  (with a small "mixed" tag). Words are matched as whole words,
+#  upper/lower case does not matter. Add Hindi spellings if you like.
+#  Order matters only for display.
+# ------------------------------------------------------------
+categories:
+  Grocery:
+    - grocery
+    - groceries
+    - kirana
+    - provisions
+    - ration
+    - dry ration
+    - atta
+    - aata
+    - wheat flour
+    - wheat
+    - maida
+    - suji
+    - sooji
+    - rava
+    - rice
+    - basmati
+    - dal
+    - daal
+    - pulses
+    - arhar
+    - toor
+    - tur dal
+    - moong
+    - masoor
+    - urad
+    - chana
+    - gram dal
+    - rajma
+    - besan
+    - poha
+    - sugar
+    - jaggery
+    - gur
+    - salt
+    - iodized salt
+    - edible oil
+    - mustard oil
+    - soyabean oil
+    - soybean oil
+    - refined oil
+    - groundnut oil
+    - sunflower oil
+    - palm oil
+    - cooking oil
+    - ghee
+    - vanaspati
+    - tea
+    - tea leaves
+    - coffee
+    - spices
+    - masala
+    - haldi
+    - turmeric
+    - chilli powder
+    - mirchi
+    - dhaniya
+    - coriander powder
+    - jeera
+    - cumin
+    - milk powder
+    - skimmed milk powder
+    - biscuits
+    - namkeen
+    - dry fruits
+    - cashew
+    - almond
+    - kishmish
+    - raisins
+    - soya chunks
+    - soya badi
+    - vermicelli
+    - sewai
+    - noodles
+    - food grains
+    - foodgrains
+    - food items
+    - food articles
+    - food material
+    - food stuff
+    - foodstuff
+    - eatables
+    - mid day meal
+    - mid-day meal
+    - mdm
+    - hostel provisions
+    - mess provisions
+    - mess items
+    - canteen items
+    - canteen stores
+    - anganwadi
+    - take home ration
+    - nutrition
+    - supplementary nutrition
+    - fmcg
+    - daily use items
+    - toiletries
+    - bathing soap
+    - washing soap
+    - soap
+    - detergent
+    - washing powder
+    - toothpaste
+    - shampoo
+    - hair oil
+    - matchbox
+    - agarbatti
+    - candles
+  Stationery & Printing: [stationery, printing, paper, a4 paper, register, notebook, pen, toner, cartridge, envelope, file cover, books, printing work]
+  Furniture: [furniture, chair, chairs, table, tables, almirah, almirah, cupboard, bench, benches, desk, sofa, rack, racks, bed, beds, mattress]
+  Electrical: [electrical, electric, cable, cables, wire, wiring, transformer, led, light, lights, lighting, fan, fans, motor, pump, generator, dg set, switchgear, solar, battery, batteries, ups, inverter, street light, substation, 33 kv, 11 kv]
+  Medical: [medical, medicine, medicines, drug, drugs, hospital, surgical, pharma, injection, tablet, tablets, syringe, diagnostic, reagent, reagents, laboratory, lab, x-ray, dental, ayurvedic, vaccine, oxygen]
+  IT & Computers: [computer, computers, laptop, laptops, desktop, printer, printers, server, software, network, networking, cctv, camera, it equipment, it hardware, projector, tablet pc, scanner, website, data entry]
+  Vehicles: [vehicle, vehicles, car, cars, bus, buses, truck, tractor, jeep, ambulance, motorcycle, taxi, hiring of vehicle, tyre, tyres]
+  Works & Construction: [construction, civil work, civil works, road, roads, building, repair, repairs, renovation, maintenance work, bridge, drain, drainage, culvert, boundary wall, pipeline, water supply, sewer, sewerage, earthwork, cc road, bt road, tubewell, dam, canal, painting, plumbing, flooring]
+  Services: [services, service, manpower, outsourcing, security guard, housekeeping, cleaning, hiring, consultancy, consultant, catering, operation and maintenance, o&m, audit, event, transport]
+  Uniforms & Textiles: [uniform, uniforms, cloth, clothing, blanket, blankets, bedsheet, bedsheets, towel, shoes, jacket, rain suit, textile, dari, durrie]
+  Agriculture: [seed, seeds, fertilizer, fertiliser, pesticide, agricultural, agriculture, cattle feed, fodder, plants, saplings, nursery]
+
+# Words that NEVER count as grocery even if a grocery word appears
+# (stops false matches like "Rice husk boiler" or "Salt spray tester").
+grocery_exclude_phrases:
+  - rice husk
+  - rice straw
+  - salt spray
+  - salt water
+  - tea garden
+  - sugar mill machinery
+  - oil filter
+  - transformer oil
+  - lubricating oil
+  - lube oil
+  - engine oil
+  - hydraulic oil
+  - diesel
+  - crude oil
+  - oil seal
+  - gram panchayat
+  - gramin
+  - tea trolley
+  - tea set
+  - tea cup
+  - tea cups
+  - tea strainer
+  - tea box
+  - tea kettle
+  - tea maker
+  - grocery container
+  - grocery trolley
+  - grocery bag
+  - salt container
+  - dog biscuits
+  - soap dispenser
+  - soap case
+  - soap dish
+  - salt bath
+  - in the ration
+  - ration of 1
+  - ration of 01
+
+# If a tender contains any of these, it is NOT counted as grocery supply
+# (these are transport / milling / storage jobs for grain, not supply).
+grocery_block_if:
+  - transportation
+  - transpotation
+  - conversion of
+  - packing
+  - carton
+  - plant
+  - machine
+  - machinery
+  - equipment
+  - catering
+  - lunch
+  - dinner
+  - refreshment
+  - meals
+  - transporter
+  - handling and transport
+  - loading and unloading
+  - loading unloading
+  - milling
+  - miller
+  - warehouse
+  - warehousing
+  - storage
+  - godown
+  - gunny
+  - fumigation
+  - procurement centre
+  - procurement center
+  - sale of
+  - auction of
+  - disposal of
+  - fabrication
+  - gauge
+  - plating
+  - leak test
+  - leak tesing
+  - broth
+  - weed
+  - shrubs
+  - horse
+
+# A tender that matches any of these categories is NOT grocery
+# (e.g. "CC road from Sharma Kirana to temple" is road work, not supply).
+grocery_block_if_category: [Works & Construction]
+
+# GeM only: extra keyword searches so grocery items hidden inside long
+# multi-item bids are not missed. GeM searches every item line for these.
+gem_grocery_searches: [atta, wheat flour, rice, dal, pulses, sugar, edible oil, mustard oil, ghee, tea, spices, salt, besan, poha, ration, grocery, provisions, soap, detergent, milk powder, biscuits, jaggery]

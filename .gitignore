@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+gem_pc/token.txt
+gem_pc/*.log
+*.tmp
+gem_pc/datakey.txt
+gem_pc/gem_raw*.json
+data/gem_raw.json
+data/gem_raw.local.json
+docs/data/tenders.json

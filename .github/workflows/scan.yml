@@ -1,0 +1,95 @@
+name: scan
+# Runs the tender scan every 3 hours (times are UTC; 00:17 UTC = 5:47 AM IST),
+# whenever GeM data arrives from the PC, and when you press "Run workflow".
+# Needs two repo secrets (Settings > Secrets and variables > Actions): TS_DATA_KEY and TS_USERS.
+# If either is missing the run FAILS and nothing is published. See LOGIN_SETUP.md.
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["data/gem_raw.enc", "config.yml", "scanner/**", "docs/index.html", "docs/app.js", "docs/style.css"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Check login secrets
+        env:
+          TS_DATA_KEY: ${{ secrets.TS_DATA_KEY }}
+          TS_USERS: ${{ secrets.TS_USERS }}
+        run: |
+          if [ -z "$TS_DATA_KEY" ]; then echo "::error::Secret TS_DATA_KEY is missing. Nothing was published. See LOGIN_SETUP.md"; exit 1; fi
+          if [ -z "$TS_USERS" ]; then echo "::error::Secret TS_USERS is missing. Nothing was published. See LOGIN_SETUP.md"; exit 1; fi
+          echo "Both login secrets are set."
+      - run: pip install -r requirements.txt pytest
+      - name: Self-test (login + encryption)
+        run: python -m pytest -q tests
+      - name: Scan tenders
+        env:
+          TS_DATA_KEY: ${{ secrets.TS_DATA_KEY }}
+          TS_USERS: ${{ secrets.TS_USERS }}
+        run: |
+          set -o pipefail
+          mkdir -p data
+          # A push of new GeM data only needs a quick merge; everything else does a full scan.
+          if [ "${{ github.event_name }}" = "push" ] && git diff --name-only HEAD~1 HEAD | grep -q '^data/gem_raw.enc$' && ! git diff --name-only HEAD~1 HEAD | grep -qv '^data/gem_raw.enc$'; then
+            python -m scanner.main --sources "" 2>&1 | tee data/last_run.log
+          else
+            python -m scanner.main 2>&1 | tee data/last_run.log
+          fi
+      - name: Safety check (no plain tender data may be published)
+        run: |
+          set -e
+          for f in docs/data/tenders.json data/gem_raw.json data/alerted.json; do
+            if [ -e "$f" ]; then echo "::error::$f exists (plain data). Stopping."; exit 1; fi
+          done
+          extra=$(ls docs/data | grep -v -E '^(tenders\.enc|users\.json|meta\.json)$' || true)
+          if [ -n "$extra" ]; then echo "::error::unexpected files in docs/data: $extra"; exit 1; fi
+          head -c 4 docs/data/tenders.enc | grep -q TSE1 || { echo "::error::tenders.enc is not encrypted"; exit 1; }
+          python - <<'EOF'
+          import json; u = json.load(open("docs/data/users.json"))
+          assert u["users"] and all(set(v) == {"salt", "iterations", "iv", "wrappedKey"} for v in u["users"].values())
+          print("users.json OK:", len(u["users"]), "login(s)")
+          EOF
+      - name: Save results
+        run: |
+          git config user.name "tender-scanner-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A docs/data data
+          git diff --cached --quiet && exit 0
+          git commit -m "scan $(TZ=Asia/Kolkata date '+%d %b %H:%M IST')"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin main && git push && break
+            sleep $((i*7))
+          done
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+  deploy:
+    needs: scan
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

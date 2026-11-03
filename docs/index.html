@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tender Scanner · MP & Rajasthan</title>
+<meta name="description" content="Open government tenders from MP Tenders, Rajasthan eProc and GeM, filtered for kirana / grocery supply.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#2563eb">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%232563eb'/><stop offset='1' stop-color='%237c3aed'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='url(%23g)'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>T</text></svg>">
+</head>
+<body class="locked">
+<section class="login" id="login">
+  <form class="lcard" id="lform" autocomplete="on">
+    <div class="brand lbrand"><div class="logo">T</div><div><h1>Tender Scanner</h1><p class="sub">MP · Rajasthan · GeM</p></div></div>
+    <p class="lhint">🔒 Private dashboard. Log in to see tenders.</p>
+    <label>Username<input id="lu" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="e.g. moksh"></label>
+    <label>Password<span class="pwrow"><input id="lp" name="password" type="password" autocomplete="current-password" placeholder="Password"><button type="button" id="lshow" class="link">Show</button></span></label>
+    <label class="rem"><input type="checkbox" id="lr"> Remember me on this device</label>
+    <div class="lerr" id="lerr" role="alert" hidden></div>
+    <button class="btn lbtn" id="lbtn" type="submit">Log in</button>
+    <p class="lfoot"><span id="lupd"></span><br>Tick "Remember me" only on your own phone or PC.</p>
+  </form>
+</section>
+<header class="top">
+  <div class="brand"><div class="logo">T</div><div><h1>Tender Scanner</h1><p class="sub" id="updated">Loading…</p></div></div>
+  <div class="srcs" id="srcs"></div>
+  <div class="userbox"><span class="whoami">👤 <b id="who"></b></span><button id="logout" class="btn ghost" type="button">Logout</button></div>
+</header>
+
+<main>
+  <section class="stats" id="stats"></section>
+
+  <section class="card filters">
+    <div class="searchrow">
+      <input id="q" type="search" placeholder="Search title, department, district, tender ID…" autocomplete="off">
+    </div>
+    <div class="grid">
+      <label>Category<select id="cat"></select></label>
+      <label>State<select id="state"><option value="">All states</option></select></label>
+      <label>District<select id="dist"><option value="">All districts</option></select></label>
+      <label>Source<select id="src"><option value="">All sources</option><option value="mptenders">MP Tenders</option><option value="rajasthan">Rajasthan eProc</option><option value="gem">GeM</option></select></label>
+      <label>Show<select id="show"><option value="open">Open</option><option value="new">New (last 2 days)</option><option value="soon">Closing soon</option><option value="near">Near you</option><option value="closed">Closed (history)</option><option value="all">Everything</option></select></label>
+      <label>Sort<select id="sort"><option value="new">Newest first</option><option value="closing">Closing soonest</option><option value="value">Value: high to low</option><option value="near">Near you first</option></select></label>
+    </div>
+    <div class="countrow"><span id="count"></span><button id="reset" class="link">Reset filters</button></div>
+  </section>
+
+  <section id="list"></section>
+  <div class="more"><button id="more" class="btn" hidden>Show more</button></div>
+  <p class="foot">Data from mptenders.gov.in, eproc.rajasthan.gov.in and bidplus.gem.gov.in (public pages, no login). Always check the official tender document before bidding.</p>
+</main>
+<div id="toast" class="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>New data key · Tender Scanner</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body class="authed"><main style="max-width:560px">
+<div class="card" style="padding:22px;margin-top:20px">
+<h1>Make a new data key</h1>
+<p class="sub" style="font-size:14px;line-height:1.6">This page makes a random key <b>inside your phone/PC</b>. It is not sent anywhere.
+Use it only when you want to lock out every device (including ones that ticked "Remember me").</p>
+<p><code id="k" style="display:block;word-break:break-all;font-size:16px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px"></code></p>
+<p><button class="btn" id="copy">Copy key</button> <button class="btn ghost" id="again">Make another</button></p>
+<ol style="line-height:1.7;font-size:14px">
+<li>Save this key somewhere private (e.g. your password manager). GitHub will not show it again.</li>
+<li>GitHub repo → <b>Settings → Secrets and variables → Actions</b> → <b>TS_DATA_KEY</b> → ✏️ → paste → <b>Update secret</b>.</li>
+<li><b>Actions → scan → Run workflow</b>. After ~5 min everyone logs in again with their password.</li>
+<li>On the GeM PC: double-click <b>setup.bat</b>, press Enter for the token, paste this new key.</li>
+</ol>
+<p><a href="./">← Back to the dashboard</a></p>
+</div></main>
+<script>
+function mk(){const u=crypto.getRandomValues(new Uint8Array(32));let s="";u.forEach(b=>s+=String.fromCharCode(b));document.getElementById("k").textContent=btoa(s)}
+mk();document.getElementById("again").onclick=mk;
+document.getElementById("copy").onclick=()=>{navigator.clipboard.writeText(document.getElementById("k").textContent);document.getElementById("copy").textContent="Copied ✓"};
+</script></body></html>
