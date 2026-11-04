@@ -1,7 +1,7 @@
-2026-11-04 01:20:21,218 INFO gepnic: mptenders: 88 organisations, 5118 tenders listed
-2026-11-04 01:21:16,911 INFO gepnic: mptenders: 5118 tenders read (0 organisations failed)
-2026-11-04 01:21:17,439 INFO scanner: mptenders: 5118 tenders, 0 new detail pages
-2026-11-04 01:21:19,662 INFO gepnic: rajasthan: 93 organisations, 1809 tenders listed
-2026-11-04 01:22:00,054 INFO gepnic: rajasthan: 1809 tenders read (0 organisations failed)
-2026-11-04 01:22:00,214 INFO scanner: rajasthan: 1809 tenders, 0 new detail pages
-2026-11-04 01:22:05,870 INFO scanner: DONE in 107s: 10197 open tenders ({'mptenders': 5118, 'rajasthan': 1809, 'gem': 3270}), 39 grocery, 2 login(s)
+2026-11-04 10:54:44,793 INFO gepnic: mptenders: 92 organisations, 5244 tenders listed
+2026-11-04 10:55:40,963 INFO gepnic: mptenders: 5244 tenders read (0 organisations failed)
+2026-11-04 10:55:54,584 INFO scanner: mptenders: 5244 tenders, 223 new detail pages
+2026-11-04 10:55:56,902 INFO gepnic: rajasthan: 95 organisations, 1840 tenders listed
+2026-11-04 10:56:39,531 INFO gepnic: rajasthan: 1840 tenders read (0 organisations failed)
+2026-11-04 10:56:45,826 INFO scanner: rajasthan: 1840 tenders, 89 new detail pages
+2026-11-04 10:56:50,840 INFO scanner: DONE in 128s: 10211 open tenders ({'mptenders': 5244, 'rajasthan': 1840, 'gem': 3127}), 38 grocery, 2 login(s)
