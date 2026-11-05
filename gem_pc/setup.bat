@@ -50,7 +50,7 @@ echo Scheduling the GeM scan every 3 hours...
 schtasks /create /tn "TenderScanner GeM" /tr "\"%~dp0run_now.bat\" silent" /sc hourly /mo 3 /f
 if errorlevel 1 ( echo Could not create the scheduled task. Right-click setup.bat and choose "Run as administrator". & pause & exit /b 1 )
 schtasks /create /tn "TenderScanner GeM at logon" /tr "\"%~dp0run_now.bat\" silent" /sc onlogon /delay 0005:00 /f >nul 2>nul
-if errorlevel 1 ( echo  (Optional "at logon" task skipped - needs "Run as administrator". The 3-hour task is enough.) )
+if errorlevel 1 ( echo  Optional at-logon task skipped - needs Run as administrator. The 3-hour task is enough. )
 echo.
 echo Running the first GeM scan now (takes about 5-15 minutes)...
 call "%~dp0run_now.bat"
