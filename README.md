@@ -1,6 +1,17 @@
-# Tender Scanner — MP, Rajasthan & GeM (private, password-protected)
+<div align="center">
 
-**Dashboard:** https://mtarvecha660-lgtm.github.io/tender-scanner/
+# Tender Scanner
+
+**A free, always-on scanner for government tenders in Madhya Pradesh and Rajasthan, built for kirana and grocery suppliers.**
+
+![Python](https://img.shields.io/badge/python-3.11-3776AB?logo=python&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/runs%20on-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/dashboard-GitHub%20Pages-222?logo=githubpages&logoColor=white)
+![Access](https://img.shields.io/badge/access-password%20protected-critical)
+
+[Open the dashboard](https://mtarvecha660-lgtm.github.io/tender-scanner/) · [Login setup](LOGIN_SETUP.md) · [GeM on Windows](GEM_SETUP.md)
+
+</div>
 
 A free robot that checks government tender websites every 3 hours, keeps every open
 tender located in **Madhya Pradesh** and **Rajasthan**, sorts them into categories
@@ -24,7 +35,7 @@ It never logs in and never submits anything. Always read the official tender doc
 - GeM cards open the official bid PDF.
 
 ## Login & privacy
-- The dashboard asks for a **username + password**. Each person (you, papa…) has their own.
+- The dashboard asks for a **username + password**. Each person (each person has their own) has their own.
 - The tender data in this repo is **encrypted** (`docs/data/tenders.enc`). Without a password the GitHub files are unreadable.
 - Passwords live only in your GitHub **Secrets** (`TS_USERS`, `TS_DATA_KEY`). Change, add or remove people:
   **[LOGIN_SETUP.md](LOGIN_SETUP.md)** (2 minutes).
