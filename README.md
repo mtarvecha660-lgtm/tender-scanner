@@ -9,6 +9,10 @@
 ![GitHub Pages](https://img.shields.io/badge/dashboard-GitHub%20Pages-222?logo=githubpages&logoColor=white)
 ![Access](https://img.shields.io/badge/access-password%20protected-critical)
 
+<p align="center">
+  <img src="docs/screenshot.png" alt="Tender Scanner private dashboard login screen" width="720">
+</p>
+
 [Open the dashboard](https://mtarvecha660-lgtm.github.io/tender-scanner/) · [Login setup](LOGIN_SETUP.md) · [GeM on Windows](GEM_SETUP.md)
 
 </div>
