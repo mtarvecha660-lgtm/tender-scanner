@@ -1,5 +1,1 @@
-2026-11-25 08:32:50,841 INFO gepnic: mptenders: 94 organisations, 4974 tenders listed
-2026-11-25 08:34:04,624 INFO gepnic: mptenders: 4974 tenders read (0 organisations failed)
-2026-11-25 08:34:27,552 INFO scanner: mptenders: 4974 tenders, 234 new detail pages
-2026-11-25 08:35:14,514 ERROR scanner: rajasthan FAILED: GET failed after 4 tries: https://eproc.rajasthan.gov.in/nicgep/app?page=FrontEndTendersByOrganisation&service=page (('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))) — keeping previous data for this source
-2026-11-25 08:35:26,092 INFO scanner: DONE in 158s: 9445 open tenders ({'mptenders': 4974, 'rajasthan': 1552, 'gem': 2919}), 99 grocery, 2 login(s)
+2026-11-25 11:46:03,810 INFO scanner: DONE in 7s: 9615 open tenders ({'mptenders': 4835, 'rajasthan': 1520, 'gem': 3260}), 102 grocery, 2 login(s)
