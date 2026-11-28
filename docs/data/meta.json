@@ -1,15 +1,15 @@
 {
- "updated": "2026-11-28T20:17",
+ "updated": "2026-11-28T23:02",
  "sources": {
   "mptenders": {
    "name": "MP Tenders",
-   "ok": true,
-   "at": "2026-11-28T13:17"
+   "ok": false,
+   "at": "2026-11-28T23:02"
   },
   "rajasthan": {
    "name": "Rajasthan eProc",
    "ok": false,
-   "at": "2026-11-28T13:17"
+   "at": "2026-11-28T23:02"
   },
   "gem": {
    "name": "GeM",
